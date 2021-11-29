@@ -1,0 +1,6 @@
+table{
+  width: calc(100vw - 200px);
+}
+th,td{
+  width: 25%;
+}

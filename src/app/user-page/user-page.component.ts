@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
+import {UserService} from "./user-service.service";
+import {MatTableDataSource} from "@angular/material/table";
 
 @Component({
   selector: 'app-user-page',
@@ -6,9 +8,12 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./user-page.component.css']
 })
 export class UserPageComponent implements OnInit {
-
-  constructor() { }
-
+  user:string
+  onChange(value:string): void {
+    this.user = value;
+  }
+  constructor() {
+  }
   ngOnInit(): void {
   }
 

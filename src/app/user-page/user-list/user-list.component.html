@@ -1,1 +1,66 @@
-<p>user-list works!</p>
+<app-search-user (searchUser)="onChange($event)" [(ngModel)]="searched" name="searchUser"
+                 ngDefaultControl></app-search-user>
+
+<!--<button mat-raised-button (click)="getData()">Add user</button>-->
+
+<div class="mat-elevation-z8">
+  <table mat-table [dataSource]="dataSource" matSort class="container">
+    <div class="row">
+      <ng-container matColumnDef="id">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> ID</th>
+        <td class="col-sm-2 col-3" mat-cell *matCellDef="let user"> {{ user.id }} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="firstName">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> First Name</th>
+        <td class="col-sm-2 col-3" mat-cell *matCellDef="let user"> {{user.firstName}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="lastName">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Last Name</th>
+        <td class="col-sm-2 col-3" mat-cell *matCellDef="let user"> {{user.lastName}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="edit">
+        <th mat-header-cell *matHeaderCellDef></th>
+        <td mat-cell *matCellDef="let user">
+
+          <div class="row">
+            <div class="col-sm-3 col-2">
+              <button mat-raised-button color="warn" (click)="removeUser(user)">
+                <mat-icon>delete</mat-icon>
+                Delete
+              </button>
+            </div>
+            <div class="col-sm-3 col-2">
+              <button  mat-raised-button color="primary" (click)="onEdit(user)">
+                <mat-icon>mode_edit</mat-icon>
+                Edit
+              </button>
+            </div>
+            <ng-container  *ngFor="let group of returnGroupUser(user)">
+              <div class="col-sm-3 col-2">
+                <button    mat-raised-button
+                           [ngStyle]="{'background': group.color,'color': 'black'}">
+                  {{group.name}}
+                </button>
+
+              </div>
+
+            </ng-container>
+
+          </div>
+        </td>
+      </ng-container>
+
+      <tr mat-header-row *matHeaderRowDef="displayedUser"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedUser"></tr>
+
+      <tr class="mat-row" *matNoDataRow>
+        <td class="mat-cell" colspan="4">No data matching the filter "{{undefinedUser}}"</td>
+      </tr>
+    </div>
+  </table>
+  <mat-paginator [pageSizeOptions]="[5,10]" aria-label="Select page of users"></mat-paginator>
+</div>
+

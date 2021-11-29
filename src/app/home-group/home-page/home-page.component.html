@@ -1,41 +1,22 @@
-<mat-toolbar color="primary" class="example-toolbar">
-  <button mat-icon-button (click)="isExpanded = !isExpanded">
-    <mat-icon>menu</mat-icon>
-  </button>
-  <h1 class="example-app-name">Menus</h1>
-</mat-toolbar>
-<mat-sidenav-container class="example-container" autosize>
-  <mat-sidenav
-    #sidenav
-    class="example-sidenav"
-    mode="side"
-    opened="true"
-  >
-    <mat-nav-list>
-      <mat-list-item (click)="showSubmenu = !showSubmenu" class="parent">
-        <a mat-tab-link routerLink="home-page" routerLinkActive="active-link" class="full-width" *ngIf="isExpanded || isShowing">Home</a>
-<!--        <span class="full-width" *ngIf="isExpanded || isShowing">Home</span>-->
-        <mat-icon mat-list-icon>home</mat-icon>
-      </mat-list-item>
-      <mat-list-item (click)="showSubmenu = !showSubmenu" class="parent">
-        <span class="full-width" *ngIf="isExpanded || isShowing">User</span>
-        <mat-icon mat-list-icon>supervisor_account</mat-icon>
-      </mat-list-item>
-      <mat-list-item (click)="showSubmenu = !showSubmenu" class="parent">
-        <span class="full-width" *ngIf="isExpanded || isShowing">Groups</span>
-        <mat-icon mat-list-icon>speaker_group</mat-icon>
-      </mat-list-item>
-    </mat-nav-list>
-  </mat-sidenav>
-
-  <div class="example-sidenav-content">
-    <mat-card>
+<div class="container">
+  <div class="row">
+    <mat-card class="col-xs-5">
       <mat-card-title>Users</mat-card-title>
-      <mat-card-subtitle>{{usersCount}}</mat-card-subtitle>
+      <mat-card-subtitle>{{usersCount}} {{usersCount > 1 ? "users" : "user" }}</mat-card-subtitle>
+      <mat-icon mat-card-avatar>supervisor_account</mat-icon>
+      <mat-card-actions>
+        <button mat-button routerLink="/users">Show Users</button>
+      </mat-card-actions>
     </mat-card>
-    <mat-card>
-      <mat-card-title>Group</mat-card-title>
+
+    <mat-card class="col-xs-5">
+      <mat-card-title>Groups</mat-card-title>
       <mat-card-subtitle>{{0}}</mat-card-subtitle>
+      <mat-icon mat-card-avatar>speaker_group</mat-icon>
+      <mat-card-actions>
+        <button mat-button routerLink="/groups">Show Groups</button>
+      </mat-card-actions>
     </mat-card>
+
   </div>
-</mat-sidenav-container>
+</div>

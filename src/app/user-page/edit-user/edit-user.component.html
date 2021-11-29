@@ -1,1 +1,12 @@
-<p>edit-user works!</p>
+<form>
+  <mat-form-field appearance="outline">
+    <mat-label>Favorite food</mat-label>
+    <input matInput type="text" [(ngModel)]="user.firstName" name="firstName">
+  </mat-form-field>
+  <mat-form-field appearance="outline">
+    <mat-label>Favorite food</mat-label>
+    <input matInput type="text" [(ngModel)]="user.lastName" name="lastName">
+  </mat-form-field>
+  <button mat-raised-button color="accent" (click)="onSave()" [disabled]="isDisabled()">Save</button>
+</form>
+

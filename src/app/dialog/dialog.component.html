@@ -1,1 +1,31 @@
-<p>dialog works!</p>
+<h1 mat-dialog-title>Edit User?</h1>
+<div mat-dialog-content>
+  <mat-form-field appearance="outline">
+    <mat-label>First Name</mat-label>
+    <input matInput [(ngModel)]="user.firstName">
+  </mat-form-field>
+  <mat-form-field appearance="outline">
+    <mat-label>Last Name</mat-label>
+    <input matInput [(ngModel)]="user.lastName">
+  </mat-form-field>
+  <mat-form-field>
+
+    <mat-select
+      [compareWith]="compareFn"
+      placeholder="Groups"
+      [(value)]="user.groups"
+      multiple
+    >
+      <mat-option *ngFor="let group of groups" [value]="group">
+        {{group.name}}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+</div>
+<div mat-dialog-actions>
+  <button mat-raised-button [mat-dialog-close]="{action: 'cancel'}">Cancel</button>
+  <button mat-raised-button color="primary" [mat-dialog-close]="user">
+    <mat-icon>done</mat-icon>
+    Save
+  </button>
+</div>

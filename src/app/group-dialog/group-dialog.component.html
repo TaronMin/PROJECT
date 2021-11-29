@@ -1,1 +1,19 @@
-<p>group-dialog works!</p>
+<h1 mat-dialog-title>Create Group?</h1>
+<div mat-dialog-content>
+  <mat-form-field appearance="outline">
+    <mat-label>Group Name</mat-label>
+    <input matInput [(ngModel)]="group.name">
+  </mat-form-field>
+  <mat-form-field appearance="outline">
+    <mat-label>Group Color</mat-label>
+    <input matInput [(ngModel)]="group.color">
+  </mat-form-field>
+  <mat-form-field appearance="outline">
+    <mat-label>Group ID</mat-label>
+    <input matInput [(ngModel)]="group.id">
+  </mat-form-field>
+</div>
+<div mat-dialog-actions>
+  <button mat-raised-button  [mat-dialog-close]="{action: 'cancel'}">Cancel</button>
+  <button mat-raised-button color="primary" [disabled]="!group.name || !group.id" [mat-dialog-close]="group"><mat-icon>done</mat-icon> Save</button>
+</div>

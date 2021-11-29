@@ -1,1 +1,14 @@
-<p>groups works!</p>
+<button mat-raised-button color="accent" (click)="addGroup()">Add Group</button>
+<div class="container">
+  <div class="row">
+    <mat-card [ngStyle]="{'background': group.color}" class="col-xs-5" *ngFor="let group of groups">
+      <mat-card-title>{{group.name}}</mat-card-title>
+      <mat-card-subtitle> {{group.users.length}} Users</mat-card-subtitle>
+      <mat-icon mat-card-avatar>speaker_group</mat-icon>
+      <mat-card-actions>
+        <button mat-button >Show Group</button>
+        <button mat-raised-button color="warn" (click)="delete(group)">Delete</button>
+      </mat-card-actions>
+    </mat-card>
+  </div>
+</div>

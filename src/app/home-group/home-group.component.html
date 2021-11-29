@@ -1,1 +1,43 @@
-<p>home-group works!</p>
+<mat-toolbar color="primary" class="example-toolbar">
+  <button mat-icon-button (click)="isExpanded = !isExpanded">
+    <mat-icon>menu</mat-icon>
+  </button>
+  <h1 class="example-app-name">Menus</h1>
+</mat-toolbar>
+<mat-sidenav-container class="example-container" autosize>
+  <mat-sidenav
+    #sidenav
+    class="example-sidenav"
+    mode="side"
+    opened="true"
+  >
+    <mat-nav-list>
+      <mat-list-item class="parent" routerLink="home-page" routerLinkActive="active-link">
+        <mat-icon mat-list-icon>home</mat-icon>
+        <span *ngIf="isExpanded || isShowing">
+          Home
+        </span>
+      </mat-list-item>
+
+      <mat-list-item class="parent" routerLink="users" routerLinkActive="active-link">
+        <mat-icon mat-list-icon>supervisor_account</mat-icon>
+        <span *ngIf="isExpanded || isShowing">Users</span>
+      </mat-list-item>
+
+      <mat-list-item class="parent" routerLink="groups" routerLinkActive="active-link">
+        <mat-icon mat-list-icon>speaker_group</mat-icon>
+        <span *ngIf="isExpanded || isShowing">Groups</span>
+      </mat-list-item>
+
+      <mat-list-item class="parent" routerLink="create" routerLinkActive="active-link">
+        <mat-icon mat-list-icon>playlist_add</mat-icon>
+        <span *ngIf="isExpanded || isShowing">Add User</span>
+      </mat-list-item>
+
+    </mat-nav-list>
+  </mat-sidenav>
+
+  <div class="example-sidenav-content">
+    <router-outlet></router-outlet>
+  </div>
+</mat-sidenav-container>

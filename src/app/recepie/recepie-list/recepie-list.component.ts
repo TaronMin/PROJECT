@@ -5,8 +5,13 @@ import {Component, OnInit,} from "@angular/core";
   templateUrl: './recepie-list.component.html',
 })
 export class RecepieListComponent implements OnInit{
+  showHide:boolean = true;
+  toggleFunction(){
+    this.showHide = !this.showHide;
+  }
   constructor() {
   }
   ngOnInit(): void {
+    console.log("ngOnInit has called");
   }
 }

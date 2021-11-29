@@ -1,1 +1,6 @@
-<p>search-user works!</p>
+<form>
+  <mat-form-field appearance="outline">
+    <mat-label>Search User</mat-label>
+    <input matInput type="text" (input)="findUser(value)" #value>
+  </mat-form-field>
+</form>

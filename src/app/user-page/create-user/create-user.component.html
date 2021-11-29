@@ -1,1 +1,40 @@
-<p>create-user works!</p>
+<form [formGroup]="myForm" (ngSubmit)="onSubmit()">
+  <mat-form-field appearance="outline">
+
+    <mat-error role="alert">
+      Please enter First Name
+    </mat-error>
+
+    <mat-label>First Name</mat-label>
+    <input matInput type="text" [(ngModel)]="user.firstName" formControlName="firstName">
+  </mat-form-field>
+
+  <mat-form-field appearance="outline">
+
+    <mat-error role="alert">Please enter
+      Second
+      Name
+    </mat-error>
+
+    <mat-label>Last Name</mat-label>
+    <input matInput type="text" [(ngModel)]="user.lastName" formControlName="secondName">
+  </mat-form-field>
+  <mat-form-field>
+
+    <mat-select
+      [compareWith]="compareFn"
+      placeholder="Groups"
+      [(value)]="user.groups"
+      multiple
+      formControlName="option"
+    >
+      <mat-option *ngFor="let group of groups" [value]="group">{{group.name}} </mat-option>
+    </mat-select>
+  </mat-form-field>
+  <br>
+  <button mat-raised-button color="accent" (click)="addUser()" [disabled]="!user.firstName || !user.lastName">
+    Add user
+  </button>
+
+  <mat-checkbox color="primary" #validator (click)="onChange()"> Validator</mat-checkbox>
+</form>

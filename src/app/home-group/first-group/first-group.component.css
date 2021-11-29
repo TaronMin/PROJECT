@@ -1,0 +1,12 @@
+table{
+  width: calc(100vw - 200px);
+}
+th,td{
+  width: 25%;
+}
+button{
+  margin: 0px 5px;
+}
+.mat-list-item{
+  font-size: 20px;
+}
